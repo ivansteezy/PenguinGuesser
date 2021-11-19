@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Caveat Brush';
+    src: local('Caveat Brush'),
+         url('../fonts/CaveatBrush-Regular.ttf') format("truetype");
+}
+
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(207, 207, 231) 35%, rgb(134, 175, 184) 100%);
+
+}
+
+
+.title {
+    
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contenedor-inputs{
+    background-color:rgb(41, 46, 44); 
+    border-radius: 5px;
+    color:bisque;
+
+}
+
+.table-entrenamiento {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-top: 20px;
+  
+}
+
+.table-entrenamiento th {
+    color:aqua;
+    
+}
+
+.table-entrenamiento td {
+    color:rgb(96, 173, 197);
+}
+
+.table-answer {
+    background-color: rgb(120, 120, 121);
+    border-radius: 5px;
+    margin-top: 20px;
+  
+}
+
+.table-answer th {
+    color:rgb(32, 32, 32);
+    
+}
+
+.table-answer td {
+    color:rgb(48, 77, 85);
+}
+
+.btn_analisis {
+    background-color: black !important;
+    color:aliceblue;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 20px;
+
+}
+
+footer{
+    text-align: center;
+    background-color: rgb(28, 26, 29);
+}
+
+.content-footer {
+    margin-top: 5px;
+    color:bisque;
+}
+
+.imagen_pinguinos { 
+    width: 96%;
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+header{
+    background-color: black;
+    color: white;
+    text-align: center;
+
+}
