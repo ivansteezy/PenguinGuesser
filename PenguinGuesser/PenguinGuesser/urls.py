@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
+from django.conf.urls import url
+from django.contrib import admin
+from django.urls.conf import include
 
-from Guesser.views import index
+from Guesser.views import index, MakePrediction
+
 
 urlpatterns = [
-    re_path(r'^$', index, name='index')
+    re_path(r'^$', index, name='index'),
+    url(r'^/prediction$', MakePrediction, name='MakePrediction')
 ]

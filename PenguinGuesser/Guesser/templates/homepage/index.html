@@ -139,20 +139,21 @@
     
 
     <div class="container contenedor-inputs" id="inputs">
-        <form class="container">
-
+        <form class="container" action="{% url 'MakePrediction' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
             <br>
             <div class="form-group row">
               <label for="hiddenlayers" >Hidden Layers</label>
 
               <div class="col-4">
-                <input type="number" class="form-control" id="hiddenlayers1" placeholder="Ingresa el primer parámetro" value="0">
+                <input type="number" class="form-control" name="hiddenlayers1" placeholder="Ingresa el primer parámetro" value="0">
               </div>
               <div class="col-4">
-                <input type="number" class="form-control" id="hiddenlayers2" placeholder="Ingresa el segundo parámetro" value="0">
+                <input type="number" class="form-control" name="hiddenlayers2" placeholder="Ingresa el segundo parámetro" value="0">
               </div>
               <div class="col-4">
-                <input type="number" class="form-control" id="hiddenlayers3" placeholder="Ingresa el tercer parámetro" value="0">
+                <input type="number" class="form-control" name="hiddenlayers3" placeholder="Ingresa el tercer parámetro" value="0">
               </div>
               
               <small id="layersinfo" class="form-text text-muted">Ingresa el numero de capas ocultas (xx,xx,xx)</small>
@@ -163,9 +164,8 @@
             <div class="form-group row">
                 <div class="container">
                     <label for="numIteraciones ">Numero de Iteraciones:</label>
-                    <input type="number" class="form-control" id="numIteraciones" placeholder="#Iteraciones">
+                    <input type="number" class="form-control" name="numIterations" placeholder="#Iteraciones">
                     <small id="layersinfo" class="form-text text-muted">Ingresa el numero de iteraciones del sistema</small>
-
                 </div>
             </div>
 
@@ -175,11 +175,11 @@
             <div class="form-group row">
                 <div class="container">
                     <label for="funcActivation">Función de Activación:</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="1" selected>identity</option>
-                        <option value="2">logistic</option>
-                        <option value="3">tanh</option>
-                        <option value="4">relu</option>
+                    <select class="form-select" name="activationFunction" aria-label="Default select example">
+                        <option value="identity" selected>identity</option>
+                        <option value="logistic">logistic</option>
+                        <option value="tanh">tanh</option>
+                        <option value="relu">relu</option>
                     </select>
                 </div>
             </div>
@@ -188,11 +188,20 @@
             <div class="form-group row">
                 <div class="container">
                     <label for="algotOptimization">Algoritmo de Optimización:</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="1" selected>lbfgs</option>
-                        <option value="2">sgd</option>
-                        <option value="3">adam</option>
+                    <select class="form-select" name="optimizationAlgorithm" aria-label="Default select example">
+                        <option value="lbfgs" selected>lbfgs</option>
+                        <option value="sgd">sgd</option>
+                        <option value="adam">adam</option>
                     </select>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <div class="container">
+                    <label for="numIteraciones ">Porcentaje de datos de entrenamiento:</label>
+                    <input type="number" class="form-control" name="trainingDataSize" placeholder="#Porcentaje">
+                    <small id="layersinfo" class="form-text text-muted">Ingresa el porcentaje de la cantidad de datos con los que se entrenara la red neuronal</small>
                 </div>
             </div>
             
@@ -200,8 +209,6 @@
             <button type="submit" class="btn btn-primary btn_analisis">Analizar</button>
         </form>
     </div>
-
-
 </div>
 
 <!--------------------------------------------------- TABLAS ---------------------------------------------->
