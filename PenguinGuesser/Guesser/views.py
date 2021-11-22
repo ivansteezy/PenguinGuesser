@@ -57,7 +57,7 @@ def MakePrediction(request):
     trainerResultData = []
     trainerResultData = json.loads(trainerJsonRecord)
 
-    context = {'resultData': resultData, 'trainerData': trainerResultData}
+    context = {'resultData': resultData, 'trainerData': trainerResultData, 'accuracy': round(accuracy, 4)}
     return render(request, 'homepage/index.html', context)
 
 

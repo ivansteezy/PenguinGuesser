@@ -120,6 +120,12 @@
 
     }
 
+    .table-wrapper {
+        max-height: 500px;
+        overflow: auto;
+        display:inline-block;
+    }
+
 </style>
 
 <body>
@@ -211,68 +217,75 @@
     </div>
 </div>
 
+{% if accuracy %}
+    <label>El accuracy fue de: {{accuracy}}%</label>
+{% endif %}
+
 <!--------------------------------------------------- TABLAS ---------------------------------------------->
 
 <div class="container table-entrenamiento">
     <h4>Datos de Entrenamiento</h4>
-    <table class="table">
-        <!-- TITULOS TABLA DATOS 1-->
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Longitud del pico (mm)</th>
-            <th scope="col">Longitud de la aleta (mm)</th>
-            <th scope="col">Especie</th>
-          </tr>
-        </thead>
-
-        <!-- CONTENIDO -->
-        <tbody>
-            {% if trainerData %}  
-            {% for i in trainerData %}
+    <div class="table-wrapper w-100">
+        <table class="table w-100">
+            <!-- TITULOS TABLA DATOS 1-->
+            <thead style="position: sticky; top: 0; z-index: 1; background-color: white;">
               <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{i.billLength}}</td>
-                <td>{{i.flipperLength}}</td>
-                <td>{{i.species}}</td>
+                <th scope="col">#</th>
+                <th scope="col">Longitud del pico (mm)</th>
+                <th scope="col">Longitud de la aleta (mm)</th>
+                <th scope="col">Especie</th>
               </tr>
-            {% endfor %}
-            {% endif %}
-        </tbody>
-      </table>
-
+            </thead>
+    
+            <!-- CONTENIDO -->
+            <tbody>
+                {% if trainerData %}  
+                {% for i in trainerData %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.billLength}}</td>
+                    <td>{{i.flipperLength}}</td>
+                    <td>{{i.species}}</td>
+                  </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+          </table>
+    </div>
 </div>
 
-<div class="container table-answer">
+<div class="container table-answer mb-4">
     <h4>Datos de Resultado</h4>
-    <table class="table">
-        <!-- TITULOS TABLA DATOS 2-->
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Longitud del pico (mm)</th>
-            <th scope="col">Longitud de la aleta (mm)</th>
-            <th scope="col">Resultado esperado</th>
-            <th scope="col">Resultado obtenido</th>
-          </tr>
-        </thead>
 
-        <!-- CONTENIDO -->
-        <tbody>
-            {% if resultData %}  
-            {% for i in resultData %}
+    <div class="table-wrapper w-100">
+        <table class="table w-100">
+            <!-- TITULOS TABLA DATOS 2-->
+            <thead style="position: sticky; top: 0; z-index: 1; background-color: rgb(120, 120, 121)">
               <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{i.billLength}}</td>
-                <td>{{i.flipperLength}}</td>
-                <td>{{i.expectedRes}}</td>
-                <td>{{i.obtainedRes}}</td>
+                <th scope="col">#</th>
+                <th scope="col">Longitud del pico (mm)</th>
+                <th scope="col">Longitud de la aleta (mm)</th>
+                <th scope="col">Resultado esperado</th>
+                <th scope="col">Resultado obtenido</th>
               </tr>
-            {% endfor %}
-            {% endif %}
-        </tbody>
-      </table>
-
+            </thead>
+    
+            <!-- CONTENIDO -->
+            <tbody>
+                {% if resultData %}  
+                {% for i in resultData %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.billLength}}</td>
+                    <td>{{i.flipperLength}}</td>
+                    <td>{{i.expectedRes}}</td>
+                    <td>{{i.obtainedRes}}</td>
+                  </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+          </table>
+    </div>
 </div>
     
 </body>
