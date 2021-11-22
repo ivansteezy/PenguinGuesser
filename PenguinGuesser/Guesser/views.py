@@ -23,7 +23,7 @@ def MakePrediction(request):
         print (optimizationAlgorithm)
         print (trainingDataSize)
 
-        pc = PenguinClassifier.PenginClassifier((hiddenlayers1, hiddenlayers2, hiddenlayers3), numIterations, activationFunction, optimizationAlgorithm, trainingDataSize)
+        pc = PenguinClassifier.PenginClassifier((hiddenlayers1, hiddenlayers2, hiddenlayers3), numIterations, activationFunction, optimizationAlgorithm, 1 - (trainingDataSize / 100))
         pc.TrainNeuralNetwork()
 
         trainerData = pc.GetTrainerData()
