@@ -228,13 +228,16 @@
 
         <!-- CONTENIDO -->
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>46.6</td>
-            <td>193.0</td>
-            <td>Chinstrap</td>
-          </tr>
-         
+            {% if trainerData %}  
+            {% for i in trainerData %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.billLength}}</td>
+                <td>{{i.flipperLength}}</td>
+                <td>{{i.species}}</td>
+              </tr>
+            {% endfor %}
+            {% endif %}
         </tbody>
       </table>
 
@@ -256,8 +259,8 @@
 
         <!-- CONTENIDO -->
         <tbody>
-            {% if d %}  
-            {% for i in d %}
+            {% if resultData %}  
+            {% for i in resultData %}
               <tr>
                 <td>{{forloop.counter}}</td>
                 <td>{{i.billLength}}</td>

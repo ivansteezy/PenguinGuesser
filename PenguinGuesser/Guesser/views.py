@@ -32,7 +32,7 @@ def MakePrediction(request):
         ala, pico = trainerData[0].T
         trainerSpecies = trainerData[1].tolist()
 
-        trainerDf = pd.DataFrame(list(zip(ala, pico, trainerSpecies)), columns=['Longitud del pico (mm)', 'Longitud de la aleta (mm)', 'Especie'])
+        trainerDf = pd.DataFrame(list(zip(ala, pico, trainerSpecies)), columns=['billLength', 'flipperLength', 'species'])
         print("Datos de entrenmiento")
         print(trainerDf)
 
@@ -49,10 +49,15 @@ def MakePrediction(request):
     else:
         print("No es un post")
 
-    jsonRecord = trainerRes.reset_index().to_json(orient='records');
-    data = [];
-    data = json.loads(jsonRecord);
-    context = {'d': data}
+    resultJsonRecord = trainerRes.reset_index().to_json(orient='records')
+    resultData = []
+    resultData = json.loads(resultJsonRecord)
+
+    trainerJsonRecord = trainerDf.reset_index().to_json(orient='records')
+    trainerResultData = []
+    trainerResultData = json.loads(trainerJsonRecord)
+
+    context = {'resultData': resultData, 'trainerData': trainerResultData}
     return render(request, 'homepage/index.html', context)
 
 
