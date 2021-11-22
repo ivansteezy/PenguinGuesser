@@ -62,6 +62,5 @@ def MakePrediction(request):
 
 
 
-def index(request):      
-    print("Hola mundo")  
+def index(request):
     return render(request, 'homepage/index.html')
