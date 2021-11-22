@@ -256,13 +256,17 @@
 
         <!-- CONTENIDO -->
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>46.6</td>
-            <td>193.0</td>
-            <td>Chinstrap</td>
-            <td>Chinstrap</td>
-          </tr>
+            {% if d %}  
+            {% for i in d %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.billLength}}</td>
+                <td>{{i.flipperLength}}</td>
+                <td>{{i.expectedRes}}</td>
+                <td>{{i.obtainedRes}}</td>
+              </tr>
+            {% endfor %}
+            {% endif %}
         </tbody>
       </table>
 

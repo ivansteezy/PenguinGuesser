@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . import PenguinClassifier
 import pandas as pd
 import logging
+import json
 
 def MakePrediction(request):
     if request.method == "POST":
@@ -38,7 +39,7 @@ def MakePrediction(request):
         expectedTrainer = pc.GetExpectedData()[0].tolist()
         alaRes,PicoRes = pc.GetExpectedData()[1].T
         speciesResult = pc.GetPredictionResults().tolist()
-        trainerRes = pd.DataFrame(list(zip(alaRes, PicoRes, expectedTrainer, speciesResult)), columns=['Longitud del pico (mm)', 'Longitud de la aleta(mm)', 'Resultado esperado', 'Resultado obtenido'])
+        trainerRes = pd.DataFrame(list(zip(alaRes, PicoRes, expectedTrainer, speciesResult)), columns=['billLength', 'flipperLength', 'expectedRes', 'obtainedRes'])
         print("Datos de resultados")
         print(trainerRes)
 
@@ -48,7 +49,11 @@ def MakePrediction(request):
     else:
         print("No es un post")
 
-    return render(request, 'homepage/index.html')
+    jsonRecord = trainerRes.reset_index().to_json(orient='records');
+    data = [];
+    data = json.loads(jsonRecord);
+    context = {'d': data}
+    return render(request, 'homepage/index.html', context)
 
 
 
