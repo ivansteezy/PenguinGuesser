@@ -126,6 +126,15 @@
         display:inline-block;
     }
 
+    .acurancy {
+        text-align: center;
+        background-color: brown;
+        color:azure;
+        font-size: 30px;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
 </style>
 
 <body>
@@ -217,9 +226,12 @@
     </div>
 </div>
 
-{% if accuracy %}
-    <label>El accuracy fue de: {{accuracy}}%</label>
-{% endif %}
+<div class="container acurancy">
+    {% if accuracy %}
+    <label>Las respuestas tuvieron una precisión del: {{accuracy}}%</label>
+    {% endif %}
+</div>
+
 
 <!--------------------------------------------------- TABLAS ---------------------------------------------->
 
@@ -299,7 +311,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <p>Ivan Ayala</p>
+                <p>Ivan Oswaldo Ayala Martinez</p>
                 <p>Hector Javier Delgado Neveu</p>
             </div>
 
